@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 57
+  controlID: 100
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 58
+  controlID: 60
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 21
+  controlID: 61
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -268,8 +268,8 @@ MonoBehaviour:
     y: 0
     width: 883.19995
     height: 428
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -317,21 +317,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Materials
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Materials
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\shali\Desktop\GitUnityProjects\PlatformTilemapTutorial
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: f6600000
-    m_LastClickedID: 24822
+    m_SelectedIDs: f2600000
+    m_LastClickedID: 24818
     m_ExpandedIDs: 00000000ce600000d0600000d2600000d4600000d6600000d860000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -451,7 +451,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 216
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -490,7 +490,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 2cfbffffba5f0000da5f0000f05f000006600000
+      m_ExpandedIDs: 4ed4ffff96d4ffffaad4fffff0d5ffff38d6ffff90d7ffff2cdaffff74daffffccdbffff1adfffff68dfffffc0e0ffff2cfbffffba5f0000da5f0000f05f000006600000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -796,7 +796,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: 1.3151411, y: 0.88711274, z: -0.0778366}
     speed: 2
-    m_Value: {x: 1.362491, y: 1.1313156, z: -0.08201919}
+    m_Value: {x: 1.3151411, y: 0.88711274, z: -0.0778366}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -845,11 +845,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0, y: 0, z: 0, w: 1}
     speed: 2
-    m_Value: {x: -0.000000006657127, y: 0.00000006869945, z: -0.000000016071727, w: -0.99999994}
+    m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
     m_Target: 8.8763685
     speed: 2
-    m_Value: 9.294626
+    m_Value: 8.8763685
   m_Ortho:
     m_Target: 1
     speed: 2
