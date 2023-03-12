@@ -9,12 +9,15 @@ public class PlayerScript : MonoBehaviour
     public float speed;
     public TextMeshProUGUI score;
     private int scoreValue = 0;
+    public GameObject winTextObject;
 
     // Start is called before the first frame update
     void Start()
     {
         rd2d = GetComponent<Rigidbody2D>();
         score.text = scoreValue.ToString();
+
+        winTextObject.SetActive(false);
     }
 
     // Update is called once per frame
