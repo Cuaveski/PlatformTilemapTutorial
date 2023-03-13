@@ -14,6 +14,7 @@ public class PlayerScript : MonoBehaviour
 
     private int scoreValue;
     private int livesValue;
+    private bool hasRun;
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +56,7 @@ public class PlayerScript : MonoBehaviour
             Destroy(collision.collider.gameObject);
         }
 
-        if(scoreValue >= 4)
+        if(scoreValue >= 8)
         {
             winTextObject.SetActive(true);
         }
@@ -64,6 +65,15 @@ public class PlayerScript : MonoBehaviour
             loseTextObject.SetActive(true);
             Destroy(gameObject);
         }
+
+
+        if (scoreValue == 4 && !hasRun)
+        {
+            transform.position = new Vector2(40.5f, -1.0f);
+            livesValue = 3;
+            hasRun = true;
+        }
+
     }
 
     private void OnCollisionStay2D(Collision2D collision)
