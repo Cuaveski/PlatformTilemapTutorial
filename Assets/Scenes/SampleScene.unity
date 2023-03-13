@@ -419,6 +419,7 @@ MonoBehaviour:
   musicClipOne: {fileID: 8300000, guid: 74e5227f4e90194419cf9486160c896f, type: 3}
   musicClipTwo: {fileID: 8300000, guid: 7ef3420be9fe43242be251db30a302f1, type: 3}
   musicSource: {fileID: 111090128}
+  hozMovement: 0
 --- !u!50 &111090130
 Rigidbody2D:
   serializedVersion: 4
@@ -4164,7 +4165,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1485678303}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19, y: 2.6, z: 0}
+  m_LocalPosition: {x: 21.2, y: 2.6, z: 0}
   m_LocalScale: {x: 3, y: 5, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4550,7 +4551,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1552002040}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10, y: -1, z: 0}
+  m_LocalPosition: {x: 12.2, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

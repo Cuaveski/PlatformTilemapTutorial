@@ -18,9 +18,14 @@ public class PlayerScript : MonoBehaviour
 
     public AudioSource musicSource;
 
+
+    public float hozMovement;
     private int scoreValue;
     private int livesValue;
     private bool hasRun;
+    private bool facingRight = true;
+
+    Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -39,8 +44,59 @@ public class PlayerScript : MonoBehaviour
         musicSource.clip = musicClipOne;
         musicSource.Play();
         musicSource.loop = true;
+
+        anim = GetComponent<Animator>();
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            anim.SetInteger("State", 1);
+        }
+
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            anim.SetInteger("State", 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            anim.SetInteger("State", 1);
+        }
+
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            anim.SetInteger("State", 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            anim.SetInteger("State", 2);
+        }
+        
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            anim.SetInteger("State", 0);
+        }
+
+
+        if (facingRight == false && hozMovement > 0)
+        {
+            Flip();
+        }
+        else if (facingRight == true && hozMovement < 0)
+        {
+            Flip();
+        }
     }
 
+    void Flip()
+    {
+        facingRight = !facingRight;
+        Vector2 Scaler = transform.localScale;
+        Scaler.x = Scaler.x * -1;
+        transform.localScale = Scaler;
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -74,7 +130,7 @@ public class PlayerScript : MonoBehaviour
             livesText.text = "Lives: " + livesValue.ToString();
             hasRun = true;
         }
-        
+
         if(scoreValue >= 8)
         {
             winTextObject.SetActive(true);
