@@ -12,6 +12,12 @@ public class PlayerScript : MonoBehaviour
     public GameObject winTextObject;
     public GameObject loseTextObject;
 
+    public AudioClip musicClipOne;
+
+    public AudioClip musicClipTwo;
+
+    public AudioSource musicSource;
+
     private int scoreValue;
     private int livesValue;
     private bool hasRun;
@@ -29,6 +35,10 @@ public class PlayerScript : MonoBehaviour
 
         winTextObject.SetActive(false);
         loseTextObject.SetActive(false);
+
+        musicSource.clip = musicClipOne;
+        musicSource.Play();
+        musicSource.loop = true;
     }
 
 
@@ -55,23 +65,28 @@ public class PlayerScript : MonoBehaviour
             livesText.text = "Lives: " + livesValue.ToString();
             Destroy(collision.collider.gameObject);
         }
-
+        
+        
+        if (scoreValue == 4 && !hasRun)
+        {
+            transform.position = new Vector2(40.5f, -1.0f);
+            livesValue = 3;
+            livesText.text = "Lives: " + livesValue.ToString();
+            hasRun = true;
+        }
+        
         if(scoreValue >= 8)
         {
             winTextObject.SetActive(true);
+            musicSource.loop = false;
+            musicSource.Stop();
+            musicSource.clip = musicClipTwo;
+            musicSource.Play();
         }
         if(livesValue == 0)
         {
             loseTextObject.SetActive(true);
             Destroy(gameObject);
-        }
-
-
-        if (scoreValue == 4 && !hasRun)
-        {
-            transform.position = new Vector2(40.5f, -1.0f);
-            livesValue = 3;
-            hasRun = true;
         }
 
     }
