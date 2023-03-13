@@ -7,18 +7,29 @@ public class PlayerScript : MonoBehaviour
 {
     private Rigidbody2D rd2d;
     public float speed;
-    public TextMeshProUGUI score;
-    private int scoreValue = 0;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI livesText;
     public GameObject winTextObject;
+    public GameObject loseTextObject;
+
+    private int scoreValue;
+    private int livesValue;
 
     // Start is called before the first frame update
     void Start()
     {
         rd2d = GetComponent<Rigidbody2D>();
-        score.text = scoreValue.ToString();
+
+        scoreValue = 0;
+        livesValue = 3;
+
+        scoreText.text = "Score: " + scoreValue.ToString();
+        livesText.text = "Lives: " + livesValue.ToString();
 
         winTextObject.SetActive(false);
+        loseTextObject.SetActive(false);
     }
+
 
     // Update is called once per frame
     void FixedUpdate()
@@ -34,8 +45,24 @@ public class PlayerScript : MonoBehaviour
         if(collision.collider.tag == "Coin")
         {
             scoreValue += 1;
-            score.text = scoreValue.ToString();
+            scoreText.text = "Score: " + scoreValue.ToString();
             Destroy(collision.collider.gameObject);
+        }
+        if(collision.collider.tag == "Enemy")
+        {
+            livesValue -= 1;
+            livesText.text = "Lives: " + livesValue.ToString();
+            Destroy(collision.collider.gameObject);
+        }
+
+        if(scoreValue >= 4)
+        {
+            winTextObject.SetActive(true);
+        }
+        if(livesValue == 0)
+        {
+            loseTextObject.SetActive(true);
+            Destroy(gameObject);
         }
     }
 
