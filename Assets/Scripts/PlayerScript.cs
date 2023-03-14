@@ -19,7 +19,7 @@ public class PlayerScript : MonoBehaviour
     public AudioSource musicSource;
 
 
-    public float hozMovement;
+
     private int scoreValue;
     private int livesValue;
     private bool hasRun;
@@ -80,6 +80,12 @@ public class PlayerScript : MonoBehaviour
         }
 
 
+
+        float hozMovement = Input.GetAxis("Horizontal");
+        float vertMovement = Input.GetAxis("Vertical");
+        
+        rd2d.AddForce(new Vector2(hozMovement * speed, vertMovement * speed));
+
         if (facingRight == false && hozMovement > 0)
         {
             Flip();
@@ -99,13 +105,6 @@ public class PlayerScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
-    {
-        float hozMovement = Input.GetAxis("Horizontal");
-        float vertMovement = Input.GetAxis("Vertical");
-        
-        rd2d.AddForce(new Vector2(hozMovement * speed, vertMovement * speed));
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
