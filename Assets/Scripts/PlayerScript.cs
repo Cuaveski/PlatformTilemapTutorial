@@ -24,6 +24,11 @@ public class PlayerScript : MonoBehaviour
     private int livesValue;
     private bool hasRun;
     private bool facingRight = true;
+    private bool isOnGround;
+    public Transform groundcheck;
+    public float checkRadius;
+    public LayerMask allGround;
+  
 
     Animator anim;
 
@@ -49,7 +54,7 @@ public class PlayerScript : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
             anim.SetInteger("State", 1);
         }
@@ -59,7 +64,7 @@ public class PlayerScript : MonoBehaviour
             anim.SetInteger("State", 0);
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKey(KeyCode.A))
         {
             anim.SetInteger("State", 1);
         }
@@ -73,18 +78,18 @@ public class PlayerScript : MonoBehaviour
         {
             anim.SetInteger("State", 2);
         }
-        
+
         if (Input.GetKeyUp(KeyCode.W))
         {
             anim.SetInteger("State", 0);
         }
 
 
-
         float hozMovement = Input.GetAxis("Horizontal");
         float vertMovement = Input.GetAxis("Vertical");
         
         rd2d.AddForce(new Vector2(hozMovement * speed, vertMovement * speed));
+
 
         if (facingRight == false && hozMovement > 0)
         {
@@ -94,6 +99,9 @@ public class PlayerScript : MonoBehaviour
         {
             Flip();
         }
+
+
+        isOnGround = Physics2D.OverlapCircle(groundcheck.position, checkRadius, allGround);
     }
 
     void Flip()
@@ -103,6 +111,7 @@ public class PlayerScript : MonoBehaviour
         Scaler.x = Scaler.x * -1;
         transform.localScale = Scaler;
     }
+
 
     // Update is called once per frame
 
@@ -120,7 +129,7 @@ public class PlayerScript : MonoBehaviour
             livesText.text = "Lives: " + livesValue.ToString();
             Destroy(collision.collider.gameObject);
         }
-        
+
         
         if (scoreValue == 4 && !hasRun)
         {
@@ -133,6 +142,11 @@ public class PlayerScript : MonoBehaviour
         if(scoreValue >= 8)
         {
             winTextObject.SetActive(true);
+            
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach(GameObject enemy in enemies)
+            GameObject.Destroy(enemy);
+
             musicSource.loop = false;
             musicSource.Stop();
             musicSource.clip = musicClipTwo;
@@ -148,7 +162,7 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.collider.tag == "Ground")
+        if(collision.collider.tag == "Ground" && isOnGround)
         {
             if(Input.GetKey(KeyCode.W))
             {
