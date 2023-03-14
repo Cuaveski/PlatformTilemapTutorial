@@ -18,18 +18,17 @@ public class PlayerScript : MonoBehaviour
 
     public AudioSource musicSource;
 
-
-
     private int scoreValue;
     private int livesValue;
     private bool hasRun;
     private bool facingRight = true;
+
     private bool isOnGround;
     public Transform groundcheck;
     public float checkRadius;
     public LayerMask allGround;
+    public float jumpForce;
   
-
     Animator anim;
 
     // Start is called before the first frame update
@@ -84,12 +83,10 @@ public class PlayerScript : MonoBehaviour
             anim.SetInteger("State", 0);
         }
 
-
         float hozMovement = Input.GetAxis("Horizontal");
         float vertMovement = Input.GetAxis("Vertical");
         
         rd2d.AddForce(new Vector2(hozMovement * speed, vertMovement * speed));
-
 
         if (facingRight == false && hozMovement > 0)
         {
@@ -100,7 +97,7 @@ public class PlayerScript : MonoBehaviour
             Flip();
         }
 
-
+        
         isOnGround = Physics2D.OverlapCircle(groundcheck.position, checkRadius, allGround);
     }
 
@@ -111,7 +108,6 @@ public class PlayerScript : MonoBehaviour
         Scaler.x = Scaler.x * -1;
         transform.localScale = Scaler;
     }
-
 
     // Update is called once per frame
 
@@ -142,7 +138,7 @@ public class PlayerScript : MonoBehaviour
         if(scoreValue >= 8)
         {
             winTextObject.SetActive(true);
-            
+
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach(GameObject enemy in enemies)
             GameObject.Destroy(enemy);
@@ -162,11 +158,11 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.collider.tag == "Ground" && isOnGround)
+        if(collision.collider.tag == "Ground")
         {
             if(Input.GetKey(KeyCode.W))
             {
-                rd2d.AddForce(new Vector2(0,3), ForceMode2D.Impulse);
+                rd2d.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             }
         }
     }
