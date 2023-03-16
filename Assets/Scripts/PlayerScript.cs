@@ -151,6 +151,7 @@ public class PlayerScript : MonoBehaviour
             musicSource.Stop();
             musicSource.clip = musicClipTwo;
             musicSource.Play();
+            musicSource.loop = true;
         }
         if(livesValue == 0)
         {

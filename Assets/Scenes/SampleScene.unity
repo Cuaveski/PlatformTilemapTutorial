@@ -2746,7 +2746,7 @@ MonoBehaviour:
   winTextObject: {fileID: 944883671}
   loseTextObject: {fileID: 929936984}
   musicClipOne: {fileID: 8300000, guid: 74e5227f4e90194419cf9486160c896f, type: 3}
-  musicClipTwo: {fileID: 8300000, guid: 7ef3420be9fe43242be251db30a302f1, type: 3}
+  musicClipTwo: {fileID: 8300000, guid: a511931786e129647a4f76dedf31aff2, type: 3}
   musicClipThree: {fileID: 8300000, guid: 6308e52cd0425d6409f6a87ef8579878, type: 3}
   musicSource: {fileID: 805605533}
   jumpForce: 4
@@ -2770,7 +2770,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 1.9
   m_Material: {fileID: 6200000, guid: 5b384e0029efe304db5831feb49f29b5, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
