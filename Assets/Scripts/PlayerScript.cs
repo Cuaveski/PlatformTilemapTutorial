@@ -24,6 +24,11 @@ public class PlayerScript : MonoBehaviour
 
     public float jumpForce;
   
+    private bool isOnGround;
+    public Transform groundcheck;
+    public float checkRadius;
+    public LayerMask allGround;
+
     Animator anim;
 
     // Start is called before the first frame update
@@ -92,14 +97,10 @@ public class PlayerScript : MonoBehaviour
         {
             Flip();
         }
-    }
 
 
-    void FixedUpdate()
-    {
         isOnGround = Physics2D.OverlapCircle(groundcheck.position, checkRadius, allGround);
     }
-
 
     void Flip()
     {
@@ -147,7 +148,6 @@ public class PlayerScript : MonoBehaviour
             musicSource.Stop();
             musicSource.clip = musicClipTwo;
             musicSource.Play();
-            musicSource.loop = true;
         }
         if(livesValue == 0)
         {
@@ -159,7 +159,7 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.collider.tag == "Ground" && isOnGround)
+        if(collision.collider.tag == "Ground")
         {
             if(Input.GetKey(KeyCode.W))
             {
