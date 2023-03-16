@@ -23,10 +23,6 @@ public class PlayerScript : MonoBehaviour
     private bool facingRight = true;
 
     public float jumpForce;
-    private bool isOnGround;
-    public Transform groundcheck;
-    public float checkRadius;
-    public LayerMask allGround;
   
     Animator anim;
 
