@@ -13,11 +13,10 @@ public class PlayerScript : MonoBehaviour
     public GameObject loseTextObject;
 
     public AudioClip musicClipOne;
-
     public AudioClip musicClipTwo;
-
+    public AudioClip musicClipThree;
     public AudioSource musicSource;
-
+    
     private int scoreValue;
     private int livesValue;
     private bool hasRun;
