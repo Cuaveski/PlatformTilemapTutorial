@@ -23,11 +23,9 @@ public class PlayerScript : MonoBehaviour
     private bool hasRun;
     private bool facingRight = true;
 
-    private bool isOnGround;
-    public Transform groundcheck;
-    public float checkRadius;
-    public LayerMask allGround;
     public float jumpForce;
+    public bool isGrounded;
+    public float offset = 0.2f;
   
     Animator anim;
 
@@ -51,6 +49,7 @@ public class PlayerScript : MonoBehaviour
 
         anim = GetComponent<Animator>();
     }
+
     void Update()
     {
         if (Input.GetKey(KeyCode.D))
@@ -97,8 +96,10 @@ public class PlayerScript : MonoBehaviour
             Flip();
         }
 
-        
-        isOnGround = Physics2D.OverlapCircle(groundcheck.position, checkRadius, allGround);
+
+        Vector2 point = transform.position + Vector3.down * offset;
+        Vector2 size = new Vector2(transform.localScale.x, transform.localScale.y);
+        isGrounded = Physics2D.OverlapBox(point, size, 0);
     }
 
     void Flip()
