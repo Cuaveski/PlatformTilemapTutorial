@@ -14,7 +14,6 @@ public class PlayerScript : MonoBehaviour
 
     public AudioClip musicClipOne;
     public AudioClip musicClipTwo;
-    public AudioClip musicClipThree;
     public AudioSource musicSource;
     
     private int scoreValue;
@@ -22,8 +21,7 @@ public class PlayerScript : MonoBehaviour
     private bool hasRun;
     private bool facingRight = true;
 
-    public float jumpForce;
-  
+
     private bool isOnGround;
     public Transform groundcheck;
     public float checkRadius;
@@ -159,11 +157,11 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.collider.tag == "Ground")
+        if(collision.collider.tag == "Ground" && isOnGround)
         {
             if(Input.GetKey(KeyCode.W))
             {
-                rd2d.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+                rd2d.AddForce(new Vector2(0, 3), ForceMode2D.Impulse);
             }
         }
     }
