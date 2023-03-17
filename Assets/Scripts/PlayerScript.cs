@@ -14,16 +14,20 @@ public class PlayerScript : MonoBehaviour
 
     public AudioClip musicClipOne;
     public AudioClip musicClipTwo;
+    public AudioClip musicClipThree;
     public AudioSource musicSource;
     
-
     private int scoreValue;
     private int livesValue;
     private bool hasRun;
     private bool facingRight = true;
 
-
-    public int jumpForce;
+    public float jumpForce;
+  
+    private bool isOnGround;
+    public Transform groundcheck;
+    public float checkRadius;
+    public LayerMask allGround;
 
     Animator anim;
 
@@ -84,7 +88,7 @@ public class PlayerScript : MonoBehaviour
         float vertMovement = Input.GetAxis("Vertical");
         
         rd2d.AddForce(new Vector2(hozMovement * speed, vertMovement * speed));
-        
+
         if (facingRight == false && hozMovement > 0)
         {
             Flip();
@@ -93,6 +97,9 @@ public class PlayerScript : MonoBehaviour
         {
             Flip();
         }
+
+
+        isOnGround = Physics2D.OverlapCircle(groundcheck.position, checkRadius, allGround);
     }
 
     void Flip()
