@@ -16,16 +16,14 @@ public class PlayerScript : MonoBehaviour
     public AudioClip musicClipTwo;
     public AudioSource musicSource;
     
+
     private int scoreValue;
     private int livesValue;
     private bool hasRun;
     private bool facingRight = true;
 
 
-    private bool isOnGround;
-    public Transform groundcheck;
-    public float checkRadius;
-    public LayerMask allGround;
+    public int jumpForce;
 
     Animator anim;
 
@@ -86,7 +84,7 @@ public class PlayerScript : MonoBehaviour
         float vertMovement = Input.GetAxis("Vertical");
         
         rd2d.AddForce(new Vector2(hozMovement * speed, vertMovement * speed));
-
+        
         if (facingRight == false && hozMovement > 0)
         {
             Flip();
@@ -95,9 +93,6 @@ public class PlayerScript : MonoBehaviour
         {
             Flip();
         }
-
-
-        isOnGround = Physics2D.OverlapCircle(groundcheck.position, checkRadius, allGround);
     }
 
     void Flip()
@@ -157,11 +152,11 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.collider.tag == "Ground" && isOnGround)
+        if(collision.collider.tag == "Ground")
         {
             if(Input.GetKey(KeyCode.W))
             {
-                rd2d.AddForce(new Vector2(0,2), ForceMode2D.Impulse);
+                rd2d.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             }
         }
     }
