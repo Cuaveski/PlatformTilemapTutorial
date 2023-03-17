@@ -2740,7 +2740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f792aa1adaa43f498dc7c1a734d4055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   scoreText: {fileID: 1520004518}
   livesText: {fileID: 1884549129}
   winTextObject: {fileID: 944883671}
@@ -2748,7 +2748,6 @@ MonoBehaviour:
   musicClipOne: {fileID: 8300000, guid: 74e5227f4e90194419cf9486160c896f, type: 3}
   musicClipTwo: {fileID: 8300000, guid: 7ef3420be9fe43242be251db30a302f1, type: 3}
   musicSource: {fileID: 805605533}
-  jumpForce: 3
   groundcheck: {fileID: 1439613275}
   checkRadius: 0.5
   allGround:

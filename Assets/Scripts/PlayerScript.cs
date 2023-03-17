@@ -161,7 +161,7 @@ public class PlayerScript : MonoBehaviour
         {
             if(Input.GetKey(KeyCode.W))
             {
-                rd2d.AddForce(new Vector2(0, 3), ForceMode2D.Impulse);
+                rd2d.AddForce(new Vector2(0,2), ForceMode2D.Impulse);
             }
         }
     }
